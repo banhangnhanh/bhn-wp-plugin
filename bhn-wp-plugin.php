@@ -11,3 +11,5 @@ Author URI: https://banhangnhanh.vn
 if (!defined('ABSPATH')) {
   exit;
 }
+
+die('dmm');
