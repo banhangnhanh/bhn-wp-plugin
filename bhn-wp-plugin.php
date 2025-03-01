@@ -3,7 +3,7 @@
 Plugin Name: BHN WP Plugin
 Plugin URI: https://banhangnhanh.vn
 Description: Plugin tùy chỉnh cho WordPress - Thêm tính năng đặc biệt vào trang web của bạn.
-Version: 1.0.0
+Version: 1.0.2
 Author: BHN
 Author URI: https://banhangnhanh.vn
 */
@@ -22,3 +22,5 @@ $pluginInfo = get_file_data(__FILE__, [
 
 define('BHN_PLUGIN_NAME', $pluginInfo['plugin_name']);
 define('BHN_VERSION', $pluginInfo['version']);
+
+BHN_INIT();

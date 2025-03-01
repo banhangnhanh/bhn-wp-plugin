@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'banhangnhanh/bhn-wp-plugin',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => '30207be4a2eca9527726f3ea971ad1e706607236',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
+        'reference' => null,
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'banhangnhanh/bhn-wp-plugin' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => '30207be4a2eca9527726f3ea971ad1e706607236',
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
+            'reference' => null,
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -231,6 +231,15 @@
             'provided' => array(
                 0 => '2.3|3.0',
             ),
+        ),
+        'symfony/var-dumper' => array(
+            'pretty_version' => 'v7.2.3',
+            'version' => '7.2.3.0',
+            'reference' => '82b478c69745d8878eb60f9a049a4d584996f73a',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/var-dumper',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'voku/portable-ascii' => array(
             'pretty_version' => '2.0.3',

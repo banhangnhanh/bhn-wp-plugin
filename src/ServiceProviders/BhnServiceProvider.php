@@ -12,6 +12,7 @@ class BhnServiceProvider extends BaseServiceProvider
   protected $providers = [
     DatabaseServiceProvider::class,
     InstallerServiceProvider::class,
+    UuidServiceProvider::class,
   ];
 
   public function register()
