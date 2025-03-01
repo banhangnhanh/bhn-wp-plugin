@@ -1,0 +1,13 @@
+{
+    "name": "banhangnhanh/bhn-wp-plugin",
+    "description": "No",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Banhangnhanh\\BhnWpPlugin\\": "src/"
+        }
+    },
+    "require": {
+        "illuminate/database": "^12.0"
+    }
+}
