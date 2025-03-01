@@ -12,6 +12,17 @@ if (!function_exists('bhn_now')) {
   }
 }
 
+if (!function_exists('bhn_get_request_data')) {
+  function bhn_get_request_data()
+  {
+    if (isset($_POST) && !empty($_POST)) {
+      return $_POST;
+    }
+
+    return json_decode(file_get_contents('php://input'), true);
+  }
+}
+
 /**
  * -----------------------------------------------
  * Core use case functions
