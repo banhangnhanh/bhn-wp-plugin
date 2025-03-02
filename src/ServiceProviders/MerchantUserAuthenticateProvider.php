@@ -20,7 +20,9 @@ class MerchantUserAuthenticateProvider extends BaseServiceProvider
     $wpCurrentUser = wp_get_current_user();
 
     if (!$wpCurrentUser) {
-      return;
+      wp_send_json([
+        'message' => 'Unauthorized (1)',
+      ], 401);
     }
 
     $headers = getallheaders();
@@ -28,12 +30,17 @@ class MerchantUserAuthenticateProvider extends BaseServiceProvider
     $merchantUserToken = isset($headers['Merchant-User-Token']) ? $headers['Merchant-User-Token'] : null;
 
     if (!$merchantUserToken) {
-      return;
+      wp_send_json([
+        'message' => 'Unauthorized (2)',
+      ], 401);
     }
 
     $merchantUser = MerchantUser::where('access_token', $merchantUserToken)->first();
 
     if (!$merchantUser) {
+      wp_send_json([
+        'message' => 'Unauthorized (3)',
+      ], 401);
       return;
     }
 
@@ -44,7 +51,9 @@ class MerchantUserAuthenticateProvider extends BaseServiceProvider
       ->exists();
 
     if (!$currentUserInMerchantUserList) {
-      return;
+      wp_send_json([
+        'message' => 'Unauthorized (4)',
+      ], 401);
     }
 
     CurrentMerchantUser::instance()->setUser($merchantUser);
