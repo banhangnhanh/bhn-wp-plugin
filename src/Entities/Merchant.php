@@ -19,4 +19,9 @@ class Merchant extends Model
   {
     return ['uuid'];
   }
+
+  public function users()
+  {
+    return $this->hasMany(MerchantUser::class);
+  }
 }

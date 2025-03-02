@@ -12,7 +12,8 @@ bhn_merchant_users
 - user_id
 - role
 
-bhn_product_lookup
+bhn_products
+- id
 - uuid
 - product_id
 - merchant_id
@@ -32,7 +33,7 @@ bhn_order_table_lookup
 - table_id
 
 [] Thêm bảng quản lý merchant
-[] Thêm bảng quản lý merchant_teams
+[] Thêm bảng quản lý merchant_users
 [] Bảng posts, có thêm cột merchant_id
 [] Bảng terms, có thêm cột merchant_id
 [] Thêm một user role là merchant 
@@ -51,7 +52,7 @@ refresh database command
 
 ```
 drop table wp_bhn_migrations;
-drop table wp_bhn_product_lookup;
+drop table wp_bhn_products;
 drop table wp_bhn_merchants;
 drop table wp_bhn_merchant_users;
 update wp_options set option_value = '' where option_name = 'BHN_version';

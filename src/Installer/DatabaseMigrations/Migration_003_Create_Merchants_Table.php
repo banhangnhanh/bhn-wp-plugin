@@ -20,6 +20,8 @@ class Migration_003_Create_Merchants_Table extends Migration
     if (!DB::schema()->hasTable('bhn_merchant_users')) {
       DB::schema()->create('bhn_merchant_users', function ($table) {
         $table->id();
+        $table->uuid('uuid')->unique();
+        $table->string('access_token')->nullable();
         $table->bigInteger('merchant_id')->index();
         $table->bigInteger('user_id')->index();
         $table->string('role')->index();

@@ -5,6 +5,7 @@ namespace Banhangnhanh\BhnWpPlugin\ServiceProviders;
 use Banhangnhanh\BhnWpPlugin\Entities\Merchant;
 use Banhangnhanh\BhnWpPlugin\Entities\MerchantUser;
 use Banhangnhanh\BhnWpPlugin\Utilities\HasInstance;
+use Banhangnhanh\BhnWpPlugin\Utilities\MerchantUserAccessTokenManager;
 
 class MerchantServiceProvider extends BaseServiceProvider
 {
@@ -45,6 +46,7 @@ class MerchantServiceProvider extends BaseServiceProvider
 
     MerchantUser::create([
       'merchant_id' => $merchant->id,
+      'access_token' => MerchantUserAccessTokenManager::generate(),
       'user_id' => $userId,
       'role' => 'owner',
     ]);

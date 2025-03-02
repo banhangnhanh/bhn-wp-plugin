@@ -14,7 +14,8 @@ class BhnServiceProvider extends BaseServiceProvider
     InstallerServiceProvider::class,
     ProductServiceProviderV2::class,
     MerchantServiceProvider::class,
-    // MerchantRestServiceProvider::class,
+    MerchantUserAuthenticateProvider::class,
+    MerchantRestServiceProvider::class,
   ];
 
   public function register()

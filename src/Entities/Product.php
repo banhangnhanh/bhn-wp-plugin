@@ -5,11 +5,11 @@ namespace Banhangnhanh\BhnWpPlugin\Entities;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 
-class MerchantUser extends Model
+class Product extends Model
 {
   use HasUuids;
 
-  protected $table = 'bhn_merchant_users';
+  protected $table = 'bhn_products';
 
   protected $guarded = [
     //
@@ -20,13 +20,8 @@ class MerchantUser extends Model
     return ['uuid'];
   }
 
-  public function merchant()
+  public function realProduct()
   {
-    return $this->belongsTo(Merchant::class);
-  }
-
-  public function realUser()
-  {
-    return $this->belongsTo(Wordpress\User::class, 'user_id', 'ID');
+    return $this->belongsTo(Woocommerce\Product::class, 'product_id', 'ID');
   }
 }
