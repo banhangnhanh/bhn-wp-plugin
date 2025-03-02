@@ -13,24 +13,20 @@ class ProductServiceProvider extends BaseServiceProvider
 
   public function register()
   {
-    add_action('save_post', [$this, 'create_btn_product'], 10, 3);
+    add_action('woocommerce_new_product', [$this, 'create_btn_product'], 10, 3);
+    // add_filter('wc_product_has_unique_sku', [$this, 'check_unique_sku'], 10, 2);
   }
 
-  public function create_btn_product($postId, $post, $isUpdate)
+  public function create_btn_product($productId)
   {
-    if ($isUpdate) {
-      return;
-    }
-
-    if ($post->post_type !== 'product') {
-      return;
-    }
-
     $currentMerchantUser = CurrentMerchantUser::instance()->getUser();
 
+    if (!$currentMerchantUser) {
+      return;
+    }
+
     $productData = [
-      'id' => $postId,
-      'product_id' => $postId,
+      'product_id' => $productId,
       'merchant_id' => $currentMerchantUser->merchant_id,
       'merchant_user_id' => $currentMerchantUser->id,
     ];
@@ -45,4 +41,9 @@ class ProductServiceProvider extends BaseServiceProvider
 
     Product::create($productData);
   }
+
+  // public function check_unique_sku($productId, $sku)
+  // {
+  //   return true;
+  // }
 }

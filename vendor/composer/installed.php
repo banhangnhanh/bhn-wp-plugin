@@ -3,7 +3,7 @@
         'name' => 'banhangnhanh/bhn-wp-plugin',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '0c03780b092547f34acbe3c8ceb83b5745a3cec2',
+        'reference' => '2ab3274b12369bcf44efd95bef016e3c8da31a78',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'banhangnhanh/bhn-wp-plugin' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '0c03780b092547f34acbe3c8ceb83b5745a3cec2',
+            'reference' => '2ab3274b12369bcf44efd95bef016e3c8da31a78',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

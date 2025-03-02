@@ -16,6 +16,9 @@ class Migration_002_Create_Products_Table extends Migration
         $table->bigInteger('merchant_id')->index();
         $table->bigInteger('merchant_user_id')->index();
         $table->datetime('last_synced_at')->nullable();
+        $table->decimal('cost', 18, 2)->default(0);
+        $table->string('unit')->nullable();
+        $table->string('note')->nullable();
         $table->timestamps();
       });
     }
