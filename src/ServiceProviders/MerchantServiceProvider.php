@@ -5,7 +5,7 @@ namespace Banhangnhanh\BhnWpPlugin\ServiceProviders;
 use Banhangnhanh\BhnWpPlugin\Entities\Merchant;
 use Banhangnhanh\BhnWpPlugin\Entities\MerchantUser;
 use Banhangnhanh\BhnWpPlugin\Utilities\HasInstance;
-use Banhangnhanh\BhnWpPlugin\Utilities\MerchantUserAccessTokenManager;
+use Illuminate\Support\Str;
 
 class MerchantServiceProvider extends BaseServiceProvider
 {
@@ -29,24 +29,31 @@ class MerchantServiceProvider extends BaseServiceProvider
 
   public function create_bhn_merchant($userId)
   {
-    error_log('init create_bhn_merchant');
-
     $user = get_userdata($userId);
 
     if (!in_array('bhn_user', $user->roles)) {
-      error_log('stop because user is not bhn_user');
       return;
     }
 
-    error_log('start create bhn_merchant');
+    $userLogin = $user->user_login;
 
-    $merchant = Merchant::create([
+    $merchantData = [
       'user_id' => $userId,
-    ]);
+    ];
+
+    if (Str::isUuid($userLogin)) {
+      $merchantData['uuid'] = $userLogin;
+    }
+
+    $merchant = Merchant::create($merchantData);
 
     MerchantUser::create([
       'merchant_id' => $merchant->id,
-      'access_token' => MerchantUserAccessTokenManager::generate(),
+
+      /**
+       * Init access token for merchant user is uuid of merchant
+       */
+      'access_token' => $merchant->uuid,
       'user_id' => $userId,
       'role' => 'owner',
     ]);

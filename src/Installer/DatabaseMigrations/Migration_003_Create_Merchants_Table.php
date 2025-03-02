@@ -13,6 +13,8 @@ class Migration_003_Create_Merchants_Table extends Migration
         $table->id();
         $table->uuid('uuid')->unique();
         $table->bigInteger('user_id')->index();
+        $table->string('phone_number')->nullable();
+        $table->string('phone_verified_at')->nullable();
         $table->timestamps();
       });
     }
