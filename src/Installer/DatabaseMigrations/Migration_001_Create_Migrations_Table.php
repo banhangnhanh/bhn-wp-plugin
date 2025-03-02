@@ -20,6 +20,8 @@ class Migration_001_Create_Migrations_Table extends Migration
 
   public static function down()
   {
-    DB::schema()->dropIfExists('bhn_migrations');
+    if (!DB::schema()->hasTable('bhn_migrations')) {
+      DB::schema()->dropIfExists('bhn_migrations');
+    }
   }
 }

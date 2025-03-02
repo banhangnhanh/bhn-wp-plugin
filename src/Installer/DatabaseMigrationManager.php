@@ -40,7 +40,7 @@ class DatabaseMigrationManager
   protected function handleInstall()
   {
     $dbVersion = get_option('BHN_version', null);
-    $firstRunMigrate = is_null($dbVersion);
+    $firstRunMigrate = !$dbVersion;
 
     if ($dbVersion != BHN_VERSION) {
       $this->handleUp($firstRunMigrate);
