@@ -57,7 +57,7 @@ class AuthController
      * Những thông tin này chỉ cần điền tạm vào cho phù hợp với rule của wordpress
      * Chứ thực chất thì không cần, nên cứ để random
      */
-    wp_insert_user([
+    $result = wp_insert_user([
       'user_login' => $initAccessToken,
       'user_pass' => Str::random(10),
       'user_email' => Str::random(10) . '@banhangnhanh.vn',
@@ -65,6 +65,16 @@ class AuthController
       'last_name' => '',
       'role' => 'bhn_user',
     ]);
+
+    if (is_wp_error($result)) {
+      $error = new WP_Error(
+        'duplicated_username',
+        'Access token is invalid',
+        array('status' => 400)
+      );
+
+      return rest_ensure_response($error);
+    }
 
     $merchantUser = MerchantUser::where('access_token', $initAccessToken)->first();
 
