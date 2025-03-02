@@ -37,7 +37,7 @@ class AuthController
       $error = new WP_Error(
         'invalid_access_token',
         'Access token is required',
-        array('status' => 400)
+        ['status' => 400]
       );
 
       return rest_ensure_response($error);
@@ -47,7 +47,7 @@ class AuthController
       $error = new WP_Error(
         'invalid_access_token',
         'Access token must be a valid UUID',
-        array('status' => 400)
+        ['status' => 400]
       );
 
       return rest_ensure_response($error);
@@ -70,7 +70,7 @@ class AuthController
       $error = new WP_Error(
         'duplicated_username',
         'Access token is invalid',
-        array('status' => 400)
+        ['status' => 400]
       );
 
       return rest_ensure_response($error);
@@ -82,7 +82,7 @@ class AuthController
       $error = new WP_Error(
         'invalid_access_token',
         'Access token is invalid',
-        array('status' => 400)
+        ['status' => 400]
       );
 
       return rest_ensure_response($error);
